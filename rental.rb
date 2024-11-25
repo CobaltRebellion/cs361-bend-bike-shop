@@ -1,17 +1,19 @@
 class Rental
 
-  attr_reader :bike
+  attr_reader :basePrice, :baseWeight, :luggageWeight
 
-  def initialize(bike)
-    @bike = bike
+  def initialize(price, weight, luggage)
+    @basePrice = price
+    @baseWeight = weight
+    @luggageWeight = luggage
   end
 
   def price
-    self.bike.price + self.bike.luggage.items.count * 10
+    @basePrice + (@baseWeight * 2) + (@luggageWeight * 2)
   end
 
   def weight
-    self.bike.weight + self.bike.luggage.items.count
+    @baseWeight + @luggageWeight
   end
 
 end
